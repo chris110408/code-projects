@@ -50,7 +50,7 @@ const id = (x) => x
 const Trace = (x) => {console.log(x)
                 return x
 };
-
+//::obj->obj
 const  find =(elt) => {
       return  map(compose(map(prop('_id')),isSomeThing,prop('stream')))(elt)
     }
@@ -66,10 +66,10 @@ const makeChannelUrl =makeUrl("channels")
 const extractUrls=compose(map(prop('url_s')),prop('photo'),prop('photos'))
 
 const streamCompose =compose(map(Http.get), map(makeStreamUrl))
-//flickrSearch :: String -> Task Error JSON
+//StreamSearch :: String -> Task Error JSON
 const StreaSearch = compose( sequence(Task.of),map(Http.get), map(makeStreamUrl))(channels)
 
-
+//chain monad
 const mchain =(fn) =>map(map(fn))
 
 //::(string->Url)->(obj->obj)->(String->Task [Obj])
@@ -105,7 +105,7 @@ const createStreamObj = (obj) => {
   return retObj;
 }
 
-
+//::obj->obj
 const createChannelObj = (obj) => {
     let retObj = {
         logo:'https://dummyimage.com/50x50/ecf0e7/5c5457.jpg&text=0x3F',
@@ -142,7 +142,7 @@ const mergeArr = (arr) =>{
 }
 const combinedTask =compose(mchain(mergeArr), liftA2(zip)(Streams))(Channels);
 
-
+// obj->bool
 const isOnline = (obj) => obj.status=='online'
 
 
