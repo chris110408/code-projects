@@ -8,3 +8,6 @@ npm start
 the website will show up on you http://localhost:8080/
 
 
+react pure functional programming styling 
+
+
